@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            <p:inputText id="btn" value="#{listaController2.mensaje}">
+                #{listaController2.initLista()}
+            </p:inputText>
+
+            <p:growl id="msg">#{listaController2.initLista()}
+            </p:growl>
+
+            <p:inputText value="#{listaController2.mensaje}"/>
+            <p:commandButton value="Boton" update="msg"></p:commandButton>
+            <p:commandButton value="Boton2" update="btn"></p:commandButton>
+            <p:commandButton value="Boton3" update="btn msg"> </p:commandButton>
+            <p:commandButton value="Boton4" action="#{listaController2.initLista()}"></p:commandButton>
+            <p:panelGrid columns="4">
+                codigo
+                <p:inputText value="#{listaController2.nuevo.codigo}"></p:inputText>
+                fecha fundacion
+                <p:inputText value="#{listaController2.nuevo.fechaFundacion}"></p:inputText>
+                capacidad personas
+                <p:inputText value="#{listaController2.nuevo.capacidadPersonas}"></p:inputText>
+                pais
+                <p:inputText value="#{listaController2.nuevo.fkPais}"></p:inputText>
+                nombre
+                <p:inputText value="#{listaController2.nuevo.nombre}"></p:inputText>
+                <p:commandButton value="Actualizar Textos" action="#{listaController2.crear()}"/>
+                <h:outputLabel value="#{listaController2.var1}" id="v1"/>
+                <h:outputLabel value="#{listaController2.var2}" id="v2"/>
+                <h:outputLabel value="#{listaController2.var3}" id="v3"/>
+<!--                <p:outputLabel id="v2" value="#{listaController2.var2}"></p:outputLabel>
+                <p:outputLabel id="v3" value="#{listaController2.var3}"></p:outputLabel>-->
+            </p:panelGrid>
+        </h:form>
+    </h:body>
+</html>

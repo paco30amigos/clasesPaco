@@ -1,0 +1,100 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <f:view contentType="text/html">
+        <h:head>
+            <f:facet name="first">
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <title>PrimeFaces</title>
+            </f:facet>
+        </h:head>
+
+        <h:body>
+
+            <p:layout fullPage="true">
+
+                <p:layoutUnit position="north" size="100" resizable="true" closable="true" collapsible="true">
+                    Header
+                </p:layoutUnit>
+
+                <p:layoutUnit position="south" size="100" closable="true" collapsible="true">
+                    Footer
+                </p:layoutUnit>
+
+                <p:layoutUnit position="west" size="175" header="Left" collapsible="true">
+                    <p:menu>
+                        <p:submenu label="Resources">
+                            <p:menuitem value="Demo" url="http://www.primefaces.org/showcase-labs/ui/home.jsf" />
+                            <p:menuitem value="Documentation" url="http://www.primefaces.org/documentation.html" />
+                            <p:menuitem value="Forum" url="http://forum.primefaces.org/" />
+                            <p:menuitem value="Themes" url="http://www.primefaces.org/themes.html" />
+
+                        </p:submenu>
+
+                    </p:menu>
+                </p:layoutUnit>
+
+                <p:layoutUnit position="center" id="panel">
+                    Welcome to PrimeFaces
+                    #{listaController2.initLista()}
+                    <p:dataTable value="#{listaController2.listaDatos}" var="lista" editable="true">
+                       
+                        
+                        <p:column headerText="columna1, entradas">
+                            <p:cellEditor>
+                                <f:facet name="output">
+                                    #{lista.capacidadPersonas}
+                                </f:facet>
+                                <f:facet name="input">
+                                    <p:inputText value="#{lista.capacidadPersonas}"></p:inputText>
+                                </f:facet>
+                            </p:cellEditor>
+                        </p:column>
+                        <p:column>
+                            <p:rowEditor>
+                            </p:rowEditor>
+                        </p:column>
+                        <p:column headerText="columna2, salidas">
+                            #{lista.codigo}
+                        </p:column>
+                    </p:dataTable>
+                    
+                    <p:dataTable value="#{listaController2.listaPais}" var="lista2" editable="true">
+                       <p:column headerText="CODIGO">
+                            #{lista2.codigo}
+                        </p:column>
+                       <p:column headerText="LATITUD">
+                            #{lista2.geoLatitud}
+                        </p:column>
+                       <p:column headerText="LONGITUD">
+                            #{lista2.geoLongitud}
+                        </p:column>
+                       <p:column headerText="NOMBRE">
+                            #{lista2.nombre}
+                        </p:column>
+                        
+
+                    </p:dataTable>
+                    <p:dataTable value="#{listaController2.listaLugar}" var="lista3" editable="true">
+                       <p:column headerText="CODIGO">
+                            #{lista3.codigo}
+                        </p:column>
+                       <p:column headerText="NOMBRE">
+                            #{lista3.nombre}
+                        </p:column>
+                         </p:dataTable>
+                    <p:inputText id="variable" value="#{listaController2.valorRecibido}" />
+                    <p:commandButton  ajax="true" update="variable" onclick ="#{listaController2.pruebaSize()}"></p:commandButton>
+                </p:layoutUnit>
+
+            </p:layout>
+
+        </h:body>
+
+    </f:view>
+</html>
+
